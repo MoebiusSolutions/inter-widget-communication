@@ -1,0 +1,10 @@
+*
+!/certs
+!/public
+!/src
+!/types
+!/httpd.conf
+!/package-lock.json
+!/package.json
+!/snowpack.config.mjs
+!/tsconfig.json

@@ -1,0 +1,52 @@
+@startuml
+skinparam BoxPadding 10
+autonumber
+
+box Origin1 #lightgreen
+participant Sender1 as Sender
+participant Recevier1 as Origin1Receiver
+endbox
+
+box BusOrigin
+participant Sender1_iframe as Bus1_iframe
+participant Recevier1_iframe as Recevier1_iframe
+participant Receiver2a_iframe as Bus2_iframe
+participant Receiver2b_iframe as Receiver2b_iframe
+endbox
+
+box Origin2 #lightblue
+participant Receiver2a as Receiver2a
+participant Receiver2b as Origin2Receiver
+endbox
+
+activate Sender
+Sender -> Origin1Receiver : BroadcastChannel\npostMessage(...)
+Sender -> Bus1_iframe : MessageChannel\npostMessage(...)
+activate Bus1_iframe
+Sender -> Sender : deliverBroadcastMessage(...)
+deactivate Sender
+
+Bus1_iframe -\ Recevier1_iframe : BroadcastChannel\npostMessage(...)
+activate       Recevier1_iframe
+Origin1Receiver <--X Recevier1_iframe
+note right: <b>Blocked by origin filter</b>
+deactivate     Recevier1_iframe
+
+Bus1_iframe -\ Bus2_iframe : BroadcastChannel\npostMessage(...)
+activate Bus2_iframe
+Bus2_iframe -> Receiver2a : MessageChannel\npostMessage(...)
+deactivate Bus2_iframe
+activate Receiver2a
+Receiver2a -> Receiver2a : deliverBroadcastMessage(...)
+deactivate Receiver2a
+
+Bus1_iframe -\ Receiver2b_iframe : BroadcastChannel\npostMessage(...)
+deactivate Bus1_iframe
+activate Receiver2b_iframe
+Receiver2b_iframe -> Origin2Receiver : MessageChannel\npostMessage(...)
+deactivate Receiver2b_iframe
+activate Origin2Receiver
+Origin2Receiver -> Origin2Receiver : deliverBroadcastMessage(...)
+deactivate Origin2Receiver
+
+@enduml

@@ -1,0 +1,9 @@
+{
+  "name": "@moesol/ozp-iwc",
+  "version": "1.2.4",
+  "description": "",
+  "main": "dist/js/ozpIwc-client.js",
+  "scripts": {},
+  "author": "",
+  "license": "Apache 2.0"
+}

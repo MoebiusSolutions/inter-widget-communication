@@ -1,0 +1,23 @@
+@startuml
+
+box OWF-Widget #lightgreen
+participant OwfSenderReceiver
+endbox
+
+box owf-interop
+participant Relay
+endbox
+
+box Non-OWF #lightblue
+participant NonOwfSenderReceiver
+endbox
+
+OwfSenderReceiver -> Relay : OWF.Eventing.publish
+Relay -> NonOwfSenderReceiver : publish
+
+== ==
+
+NonOwfSenderReceiver -> Relay : publish
+Relay -> OwfSenderReceiver : OWF.Eventing.publish
+
+@enduml

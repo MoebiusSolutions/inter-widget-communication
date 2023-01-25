@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Web site created using create-snowpack-app" />
+    <title>OWF / BroadcastChannel interop</title>
+    <script src="./js/owf-widget-debug.js"></script>
+  </head>
+  <body>
+    <h2>Background Widget</h2>
+    This example is designed to run as a background widget.
+    It will publish messages from OWF to a BroadcastChannel.
+    This supports migrating a widget/application from OWF,
+    by allowing it to communicate with widgets that have not been migrated.
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script type="module" src="./dist/index.js"></script>
+  </body>
+</html>

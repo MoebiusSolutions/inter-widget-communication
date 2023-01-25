@@ -1,0 +1,53 @@
+{
+  "name": "@moesol/inter-widget-communication",
+  "version": "2.8.0-SNAPSHOT.0",
+  "description": "NPM library to tranistion off OWF. Provides wrapped calls to OWF ready, subscribe and publishing functions and alternative implementations.",
+  "main": "build/index.js",
+  "module": "types/index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "webpack --mode development",
+    "build": "npm run check-types && npm test && webpack-cli --mode production --env production",
+    "prepack": "npm run build",
+    "check-types": "tsc",
+    "coverage": "jest --coverage",
+    "format": "prettier --write \"src/**/*.ts\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MoebiusSolutions/inter-widget-communication.git"
+  },
+  "types": "types/index.d.ts",
+  "files": [
+    "/build",
+    "/types"
+  ],
+  "keywords": [
+    "owf"
+  ],
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}"
+    ],
+    "testMatch": [
+      "<rootDir>/tests/**/*.{js,jsx,ts,tsx}"
+    ]
+  },
+  "author": "Moebius Solutions",
+  "license": "BlueOak-1.0.0",
+  "dependencies": {
+    "core-js": "^3.13.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.16",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-typescript": "^7.13.0",
+    "@types/jest": "^26.0.23",
+    "babel-loader": "^8.2.2",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.4",
+    "webpack": "^5.36.0",
+    "webpack-cli": "^4.6.0"
+  }
+}

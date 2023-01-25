@@ -1,0 +1,49 @@
+#!/bin/sh
+set -e
+
+make_cert() {
+    name=$1
+    path=$2
+    with_client=$3
+    shift; shift; shift
+
+    if [ "$path" = "x" ]; then
+        path="$name"
+    fi
+
+    if [ ! -d "$path" ]; then
+        echo "Skipping '$name', directory '$path' does not exist."
+        return
+    fi
+
+    if [ -f "$path/$name.pem" ]; then
+        echo "Skipping '$name', delete '$path/$name.pem' to regenerate."
+        return
+    fi
+
+    cp "$(mkcert -CAROOT)/rootCA.pem" "$path/"
+
+    mkcert \
+        -cert-file "$path/$name.pem" \
+        -key-file "$path/$name-key.pem" \
+        "$@"
+
+    if [ "$with_client" = 1 ]; then
+        cert_file="$path/$name-client.pem"
+        key_file="$path/$name-client-key.pem"
+        mkcert -client -cert-file "$cert_file" -key-file "$key_file" "$@"
+        openssl pkcs12 -export -in "$cert_file" -inkey "$key_file" \
+            -out "$path/$name-client.p12" -passout pass:
+    fi
+}
+
+# mkcert -install is slow, only run it once
+if [ ! -f .mkcert-installed ]; then
+    mkcert -install
+    touch .mkcert-installed
+else
+    echo "mkcert was already initialized, delete '.mkcert-installed' to re-run."
+fi
+
+make_cert bcst-bus ./bcst-bus/certs 1 bcst-bus localhost 127.0.0.1 ::1
+make_cert bcst-owf-interop ./bcst-owf-interop/certs 1 bcst-owf-interop localhost 127.0.0.1 ::1

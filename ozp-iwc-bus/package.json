@@ -1,0 +1,14 @@
+{
+  "name": "iwc-bus",
+  "version": "1.2.4",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server --port 9090"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^0.12.3"
+  }
+}
