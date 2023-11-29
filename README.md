@@ -33,7 +33,7 @@ without having to wrap them in a `ready` call.
 Example usage:
 
 ```typescript
-import { initialize } from '@moesol/inter-widget-communication'
+import { initialize } from '@gohypergiant/inter-widget-communication'
 
 const myId = initialize({
   provider: 'broadcast',
@@ -95,8 +95,8 @@ The sample client built using these instructions is here: `inter-widget-communic
 Clients can use `ozp-iwc` by installing the required dependencies:
 
 ```
-npm install @moesol/inter-widget-communication
-npm install @moesol/ozp-iwc
+npm install @gohypergiant/inter-widget-communication
+npm install @gohypergiant/ozp-iwc
 ```
 
 Then in `package.json`, copying the `ozpIwc-client` files to where static assets will be served.
@@ -104,7 +104,7 @@ Then in `package.json`, copying the `ozpIwc-client` files to where static assets
 ```json
 "scripts": {
     ...
-    "copy": "copyfiles --up 5 node_modules/@moesol/ozp-iwc/dist/js/* public/js/ozp-iwc-1.2.4",
+    "copy": "copyfiles --up 5 node_modules/@gohypergiant/ozp-iwc/dist/js/* public/js/ozp-iwc-1.2.4",
     ...
 }
 ```
@@ -128,7 +128,7 @@ Then adding in `index.html`
 Then in `index.tsx` or initial JavaScript/Typescript entry, adding
 
 ```typescript
-import { initialize } from '@moesol/inter-widget-communication'
+import { initialize } from '@gohypergiant/inter-widget-communication'
 
 const myId = initialize({
   busUrl: 'http://localhost:9090/ozp-iwc-1.2.4'

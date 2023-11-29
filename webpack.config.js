@@ -8,7 +8,7 @@ module.exports = function(env, argv) {
             path: path.resolve(__dirname, 'build'),
             clean: true,
             library: {
-                name: '@moesol/inter-widget-communication',
+                name: '@gohypergiant/inter-widget-communication',
                 type: 'umd',
             },
             globalObject: 'this',

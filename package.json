@@ -1,5 +1,5 @@
 {
-  "name": "@moesol/inter-widget-communication",
+  "name": "@gohypergiant/inter-widget-communication",
   "version": "2.8.0-SNAPSHOT.0",
   "description": "NPM library to tranistion off OWF. Provides wrapped calls to OWF ready, subscribe and publishing functions and alternative implementations.",
   "main": "build/index.js",
