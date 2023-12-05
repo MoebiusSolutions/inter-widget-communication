@@ -11,6 +11,7 @@ module.exports = function(env, argv) {
                 name: '@moesol/inter-widget-communication',
                 type: 'umd',
             },
+            globalObject: 'this',
         },
 
         resolve: {
